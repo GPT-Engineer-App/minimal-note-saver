@@ -8,7 +8,8 @@ const Index = () => {
 
   const handleSave = () => {
     // Simulate saving to a backend or local storage
-    console.log("Note saved:", note); // This would be replaced with an actual save function
+    const existingNotes = JSON.parse(localStorage.getItem("notes")) || [];
+    localStorage.setItem("notes", JSON.stringify([...existingNotes, note]));
     toast({
       title: "Note saved successfully.",
       description: "Your note has been saved.",
